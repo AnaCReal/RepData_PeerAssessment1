@@ -1,0 +1,20 @@
+---
+title: "Data Analysis Assignment"
+author: "Ana Real"
+date: "February 12, 2019"
+output: html_document
+---
+## Reading the data 
+
+```{r}
+unzip("activity.zip")
+data <- read.csv("activity.csv")
+Sys.setlocale("LC_TIME", "C")
+data$date <- as.Date(data$date, format="%Y-%m-%d")
+```
+
+## Calculating the mean total number of steps per day, ignoring missing values.
+
+```{r}
+datam <- tapply(data$steps, data$date, mean, na.rm=TRUE)
+```
